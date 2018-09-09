@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bingo Lottery</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div id="app" class="container-fluid">
+        <div class="row row-stage">
+            <div class="col-12">
+                    <div class="ball ball-stage text-center m-auto animated" 
+                        v-text="num" 
+                        v-bind:class="{ tada: completeAnimate, fadeInLeft: countingAnimate }" 
+                        v-bind:style="{ background: 'radial-gradient(#fff, ' + stageBallColor + ')' }"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row row-function">
+                    <div class="col-sm-6 text-center m-auto">
+                        <button type="button" class="btn btn-primary" v-on:click="startNew()">開始新局</button>
+                        <button type="button" class="btn" v-bind:class="[nextBtnClass]" v-on:click="next()" v-show="showNextBtn">產生號碼</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row row-record border-top">
+            <div class="col-12">
+                <div class="d-flex flex-row flex-wrap">
+                    <div class="ball ball-record text-center animated fadeInRight" 
+                        v-for="(item,index) in nums" 
+                        v-text="item.num" 
+                        v-bind:style="{ background: 'radial-gradient(#fff, ' + item.ballColor + ')' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio autoplay loop id="audio-start">
+        <source src="music/Good_Starts.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio-start-beeps">
+        <source src="music/start_beeps.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio-lottery">
+        <source src="music/Wicked_Things.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="audio-lottery-end">
+        <source src="music/Officers_Call.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
